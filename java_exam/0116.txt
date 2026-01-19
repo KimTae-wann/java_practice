@@ -5,5 +5,4 @@ NumberFormatException
 -> true / false를 예측해서 코딩을 하는 것이 크게 의미가 있는가?
 true가 나올 확률이 높은 것을 앞에다? 아니면 가벼운 연산을 앞에다?
 
-클린코드에 대한 고찰 else if 중괄호 뒤에?
 git
