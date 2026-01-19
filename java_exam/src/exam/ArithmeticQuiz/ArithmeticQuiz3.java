@@ -1,4 +1,4 @@
-package exam;
+package exam.ArithmeticQuiz;
 
 public class ArithmeticQuiz3 {
 
