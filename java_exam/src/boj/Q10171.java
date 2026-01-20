@@ -1,4 +1,4 @@
-package exam;
+package boj;
 
 public class Q10171 {
 	

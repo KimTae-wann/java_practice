@@ -23,3 +23,4 @@ public class MethodQuiz14 {
 		return (char)(a - 32);
 	}
 }
+	

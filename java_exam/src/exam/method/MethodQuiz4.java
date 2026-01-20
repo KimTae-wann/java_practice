@@ -1,4 +1,4 @@
-package exam;
+package exam.method;
 
 public class MethodQuiz4 {
 	
