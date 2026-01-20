@@ -20,6 +20,6 @@ public class MethodQuiz14 {
 		if (a < 'a' || a > 'z') {
 			return ' ';
 		}
-		return (a - 32);
+		return (char)(a - 32);
 	}
 }

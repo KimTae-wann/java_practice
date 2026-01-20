@@ -26,5 +26,4 @@ public class ArithmeticOperator {
 		System.out.println(m--); // 11
 		System.out.println(m); // 10
 	}
-
 }
