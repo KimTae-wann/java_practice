@@ -4,17 +4,18 @@ public class Customer {
 	
 	private int customerNum;
 	private final int stockWeight = 500;	// 상품 무게
-	private final int productPrice = 1000;	// 상품 가격
+	private final int productPrice;			// 상품 가격
 	private int boughtStock;				// 구매한 상품
 	private int capital;					// 자본금
 	private int canLift;					// 들 수 있는 장바구니 무게
-	public boolean canBuy = true;;
+	public boolean canBuy = true;
 	
-	public Customer(int customerNum, int capital, int canLift) {
+	public Customer(int customerNum, int capital, int canLift, int productPrice) {
 		boughtStock = 0;
 		this.customerNum = customerNum;
 		this.capital = capital;
 		this.canLift = canLift; // 사람마다 다르다.
+		this.productPrice = productPrice;
 	}
 	
 	public boolean buy(int productNum) {

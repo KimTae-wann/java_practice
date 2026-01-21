@@ -8,8 +8,8 @@ public class SellingBuyingMain {
 		Scanner sc = new Scanner(System.in);
 		
 		Seller seller = new Seller(100, 2000);
-		Customer customer1 = new Customer(1, 40000, 100000);
-		Customer customer2 = new Customer(2, 60000, 50000);
+		Customer customer1 = new Customer(1, 40000, 100000, seller.getProductPrice());
+		Customer customer2 = new Customer(2, 60000, 50000, seller.getProductPrice());
 		
 		while(true) {
 			if ((!customer1.canBuy && !customer2.canBuy) || seller.stock <= 0) {

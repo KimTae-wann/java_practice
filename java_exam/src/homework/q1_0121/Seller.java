@@ -10,13 +10,18 @@ public class Seller {
 		this.capital = capital;
 	}
 	
+	public int getProductPrice() {
+		return productPrice;
+	}
+	
 	public void sell(int productNum) {
 		if (productNum > stock) {
-			capital = productPrice * stock;
-			stock = 0;
+			System.out.println(productNum + "만큼 물품을 구매 할 수 없습니다.");
+			return ;
 		}
 		if (stock == 0) {
 			System.out.println("품절되었습니다.");
+			return ;
 		}
 		stock -= productNum;
 		capital += productNum * productPrice;
