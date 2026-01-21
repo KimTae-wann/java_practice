@@ -12,7 +12,9 @@ public class SellingBuyingMain {
 		Customer customer2 = new Customer(2, 60000, 50000);
 		
 		while(true) {
-			if ((!customer1.canBuy && !customer2.canBuy) || seller.stock <= 0) break;
+			if ((!customer1.canBuy && !customer2.canBuy) || seller.stock <= 0) {
+				break;
+			}
 			System.out.print("몇 번 고객이 상품을 구매하나요? (1 or 2): ");
 			int customerNum = sc.nextInt();
 			if (customerNum != 1 && customerNum != 2) {
