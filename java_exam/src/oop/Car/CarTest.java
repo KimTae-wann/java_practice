@@ -1,4 +1,4 @@
-package oop;
+package oop.Car;
 
 public class CarTest {
 	

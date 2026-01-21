@@ -1,4 +1,4 @@
-package oop;
+package oop.Student;
 
 public class Student {
 	private int javaScore;

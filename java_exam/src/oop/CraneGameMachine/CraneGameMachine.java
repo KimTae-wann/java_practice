@@ -1,4 +1,4 @@
-package oop;
+package oop.CraneGameMachine;
 
 import java.util.Random;
 

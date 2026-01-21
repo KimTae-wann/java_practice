@@ -1,4 +1,4 @@
-package oop;
+package oop.CraneGameMachine;
 
 public class CraneGameMachineMain {
 	
