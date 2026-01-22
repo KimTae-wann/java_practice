@@ -3,7 +3,7 @@ package homework.q1_0121;
 public class Customer {
 	
 	private int customerNum;
-	private final int stockWeight = 500;	// 상품 무게
+	private static final int stockWeight = 500;	// 상품 무게
 	private final int productPrice;			// 상품 가격
 	private int boughtStock;				// 구매한 상품
 	private int capital;					// 자본금

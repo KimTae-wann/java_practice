@@ -10,6 +10,7 @@ public class SellingBuyingMain {
 		Seller seller = new Seller(100, 2000);
 		Customer customer1 = new Customer(1, 40000, 100000, seller.getProductPrice());
 		Customer customer2 = new Customer(2, 60000, 50000, seller.getProductPrice());
+		//Customer[] customers = {customer1, customer2};
 		
 		while(true) {
 			if ((!customer1.canBuy && !customer2.canBuy) || seller.stock <= 0) {
