@@ -2,9 +2,9 @@ package homework.q1_0123refactor;
 
 import java.util.*;
 
-import homework.q1_0123.restaurant.*;
-import homework.q1_0123.menu.*;
-import homework.q1_0123.customer.*;
+import homework.q1_0123refactor.restaurant.*;
+import homework.q1_0123refactor.menu.*;
+import homework.q1_0123refactor.customer.*;
 
 public class RestaurantMain {
 
@@ -13,22 +13,22 @@ public class RestaurantMain {
 		Restaurant vips = new Restaurant("VIPS", 10.0, 1000);
 		Restaurant outback = new Restaurant("OUTBACK", 10.0, 1000);
 		
-		Menu vipsMenu1 = new Menu("주류", "소주", 5000, 0, 19.0, 100);
-		Menu vipsMenu2 = new Menu("주류", "맥주", 6000, 0, 6.0, 80);
-		Menu vipsMenu3 = new Menu("주류", "보드카", 5000, 0, 40.0, 15);
-		Menu vipsMenu4 = new Menu("식사류", "스테이크", 10000, 500, 0.0, 200);
-		Menu vipsMenu5 = new Menu("식사류", "파스타", 8000, 300, 0.0, 70);
+		Menu vipsMenu1 = new Drink("소주", 5000, 100, 19.0);
+		Menu vipsMenu2 = new Drink("맥주", 6000, 80, 6.0);
+		Menu vipsMenu3 = new Drink("보드카", 5000, 15, 40.0);
+		Menu vipsMenu4 = new Food("스테이크", 10000, 200, 500);
+		Menu vipsMenu5 = new Food("파스타", 8000, 70, 300);
 		vips.addMenu(vipsMenu1);
 		vips.addMenu(vipsMenu2);
 		vips.addMenu(vipsMenu3);
 		vips.addMenu(vipsMenu4);
 		vips.addMenu(vipsMenu5);
 		
-		Menu outbackMenu1 = new Menu("주류", "소주", 5000, 0, 19.0, 100);
-		Menu outbackMenu2 = new Menu("주류", "맥주", 6000, 0, 6.0, 80);
-		Menu outbackMenu3 = new Menu("주류", "보드카", 5000, 0, 40.0, 15);
-		Menu outbackMenu4 = new Menu("식사류", "스테이크", 10000, 500, 0.0, 200);
-		Menu outbackMenu5 = new Menu("식사류", "파스타", 8000, 300, 0.0, 70);
+		Menu outbackMenu1 = new Drink("소주", 5000, 100, 19.0);
+		Menu outbackMenu2 = new Drink("맥주", 6000, 80, 6.0);
+		Menu outbackMenu3 = new Drink("보드카", 5000, 15, 40.0);
+		Menu outbackMenu4 = new Food("스테이크", 10000, 200, 500);
+		Menu outbackMenu5 = new Food("파스타", 8000, 70, 300);
 		outback.addMenu(outbackMenu1);
 		outback.addMenu(outbackMenu2);
 		outback.addMenu(outbackMenu3);
