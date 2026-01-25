@@ -12,7 +12,6 @@ public class Menu {
 	
 	
 	public Menu(String type, String name, int price, int weight, double alcohol, int stock) {
-		super();
 		this.type = type;
 		this.name = name;
 		this.price = price;
