@@ -4,40 +4,43 @@ import homework.q1_0123.menu.*;
 
 public class Customer {
 
-	private int customerNum;
-	private int fullDegree;
-	private int alcoholDegree;
+	private String name;
+	private double drunkenness;
+	private int fullness;
+	private int money;
 	
-	public Customer(int customerNum, int fullDegree, int alcoholDegree) {
-		this.customerNum = customerNum;
-		this.fullDegree = fullDegree;
-		this.alcoholDegree = alcoholDegree;
-	}
-
-	public int getCustomerNum() {
-		return customerNum;
+	public Customer(String name, double drunkenness, int fullness, int money) {
+		this.name = name;
+		this.drunkenness = drunkenness;
+		this.fullness = fullness;
+		this.money = money;
 	}
 	
-	public int getFullDegree() {
-		return fullDegree;
+	public String getName() {
+		return name;
 	}
 
-	public void setFullDegree(int fullDegree) {
-		this.fullDegree = fullDegree;
+	public double getDrunkenness() {
+		return drunkenness;
 	}
 
-	public int getAlcoholDegree() {
-		return alcoholDegree;
+	public int getFullness() {
+		return fullness;
 	}
 
-	public void setAlcoholDegree(int alcoholDegree) {
-		this.alcoholDegree = alcoholDegree;
+	public int getMoney() {
+		return money;
+	}
+
+	public void drink(double alcoholVolume) {
+		drunkenness += alcoholVolume * 0.1;
 	}
 	
-	public void buy(String menuName,) {
-		for (Menu)
-		// 순환해서
-		// 술이면 alcoholDegree 증가
-		// 음식이면 fullDegree 증가
+	public void eat(int foodWeight) {
+		fullness += foodWeight;
+	}
+	
+	public void pay(int amount) {
+		money -= amount;
 	}
 }

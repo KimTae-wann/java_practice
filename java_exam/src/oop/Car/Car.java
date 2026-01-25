@@ -3,11 +3,18 @@ package oop.Car;
 public class Car {
 	
 	private boolean isEngineStart;
+	private String carName;
 	private int speed;
 	
 	/**
 	 * 
 	 */
+	
+	public Car (String carName, int speed) {
+		this.carName = carName;
+		this.speed = speed;
+	}
+	
 	public void pressEngineStartButton() {
 		if (isEngineStart) {
 			System.out.println("시동을 끕니다");
