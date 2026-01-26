@@ -28,7 +28,8 @@ public class Restaurant {
 	
 	public void takeOrder(Customer customer, Menu menu) {
 		System.out.println("고객명 : " + customer.getName());
-		System.out.println(customer.getName() + "의 취함 정도: " + String.format("%.1f", customer.getDrunkenness()));
+		// 어차피 toString 으로 커버될텐데
+		System.out.println(customer.getName() + "의 취함 정도: " + String.format("%.1f", customer.getDrunkenness())); 
 		System.out.println(customer.getName() + "의 배부름 정도: " + customer.getFullness());
 		System.out.println(customer.getName() + "의 소지금: " + customer.getMoney());
 		System.out.println("주문 금액: " + menu.getPrice());
@@ -71,10 +72,21 @@ public class Restaurant {
 	public void printStatus() {
 		System.out.println(name + "상태 확인");
 		System.out.println("Menu ========");
-		for (int i = 0; i < menuCount; i++) {
-			Menu m = menus[i];
-			String info = m.getType().equals("주류") ? m.getAlcohol() + "%" : m.getWeight() + "g";
-			System.out.println((i + 1) + ". " + m.getType() + " / " + m.getPrice() + "원 / " + info + " / " + m.getStock() + "개");
+//		for (int i = 0; i < menuCount; i++) {
+//			Menu m = menus[i];
+//			//String info = m.getType().equals("주류") ? m.getAlcohol() + "%" : m.getWeight() + "g"; // 코드가 길어지더라도 삼항 연산자 사용 X
+//			System.out.println((i + 1) + ". " + m.getType() + " / " + m.getPrice() + "원 / " + info + " / " + m.getStock() + "개");
+//		}
+		int i = 1;
+		for (Menu m : menus) {
+			if (m != null) { // nullPointerException 걸림
+				if (m.getType().equals("주류")) {
+					System.out.println((i++) + ". " + m.getType() + " / " + m.getPrice() + "원 / " + m.getAlcohol() + "% / " + m.getStock() + "개");
+				}
+				else {
+					System.out.println((i++) + ". " + m.getType() + " / " + m.getPrice() + "원 / " + m.getWeight() + "g / " + m.getStock() + "개");
+				}
+			}
 		}
 		System.out.println("매출금: " + totalSales + "\n");
 	}
