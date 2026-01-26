@@ -7,7 +7,7 @@ import homework.q1_0123.menu.*;
 import homework.q1_0123.customer.*;
 
 public class RestaurantMain {
-
+	
 	public static void main(String[] args) {
 		
 		Restaurant vips = new Restaurant("VIPS", 10.0, 1000);
