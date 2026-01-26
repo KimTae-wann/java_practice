@@ -1,0 +1,21 @@
+객체지향 설계 5원칙 SOLID
+
+SRP	The Single Responsibility Principle		A class should have one, and only one, reason to change.
+OCP	The Open Closed Principle				You should be able to extend a classes behavior, without modifying it.
+LSP	The Liskov Substitution Principle		Derived classes must be substitutable for their base classes.
+ISP	The Interface Segregation Principle		Make fine grained interfaces that are client specific.
+DIP	The Dependency Inversion Principle		Depend on abstractions, not on concretions.
+
+
+Liskov Substitution Principle이 발생시키는 side effect
+
+향상된 for문 vs for문
+
+향상된 for이 더 빠른이유는
+1. JIT 컴파일러가 인덱스 범위 체크 과정을 하지 않는다 (이 배열은 안전하다고 판단)
+2. 연산자와 배열을 미리 캐싱해둔다
+
+this 사용에 대한 고찰
+
+메서드 오버로딩
+String 관련 메서드
