@@ -269,28 +269,28 @@ public class Q1_0127 {
 	    } 
 		*/
 		
-		/* Pro 181867
-		public static int[] addList(int[] arr) {
-		    int[] returnArr = new int[arr.length + 1];
-		    for (int i = 0; i < arr.length; i++) {
-		        returnArr[i] = arr[i];
-		    }
-		    return returnArr;
-		}
-	    public int[] solution(String myString) {
-	        int[] answer = {};
-	        String[] tempArr = myString.split("x");
-	        for (int i = 0; i < tempArr.length; i++) {
-	            answer = addList(answer);
-	            answer[answer.length - 1] = tempArr[i].length();
-	        }
-	        if (myString.charAt(myString.length() - 1) == 'x') {
-	            answer = addList(answer);
-	            answer[answer.length - 1] = 0;
-	        }
-	        return answer;
-	    }
-		*/
+//		Pro 181867
+//		public static int[] addList(int[] arr) {
+//		    int[] returnArr = new int[arr.length + 1];
+//		    for (int i = 0; i < arr.length; i++) {
+//		        returnArr[i] = arr[i];
+//		    }
+//		    return returnArr;
+//		}
+//	    public int[] solution(String myString) {
+//	        int[] answer = {};
+//	        String[] tempArr = myString.split("x");
+//	        for (int i = 0; i < tempArr.length; i++) {
+//	            answer = addList(answer);
+//	            answer[answer.length - 1] = tempArr[i].length();
+//	        }
+//	        if (myString.charAt(myString.length() - 1) == 'x') {
+//	            answer = addList(answer);
+//	            answer[answer.length - 1] = 0;
+//	        }
+//	        return answer;
+//	    }
+		
 		
 		/* Pro 181868
 		public String[] solution(String my_string) {
@@ -347,8 +347,8 @@ public class Q1_0127 {
 			System.out.println(max + "\n" + (y + 1) + " " + (x + 1));
 		}
 		*/
-		
 		/* BOJ 10798
+		 * Case1
 		public static void main(String[] args) {
 		    Scanner sc = new Scanner(System.in);
 		    int maxLine = 0;
@@ -365,10 +365,33 @@ public class Q1_0127 {
 		    
 		    for (int i = 0; i < maxLine; i++) {
 		        for (int j = 0; j < 5; j++) {
-		            System.out.print(arr[j][i]);
+		        	if(arr[j][i] != '\u0000' ) {
+		        		System.out.print(arr[j][i]);		        		
+		        	}
 		        }
 		    }
 		}
-		 */
+		* Case 2
+		public static void main(String[] args) {
+		    Scanner sc = new Scanner(System.in);
+		    int maxLine = 0;
+		    char[][] arr = new char[5][];
+		    for (int i = 0; i < 5; i++) {
+	    	    String str = sc.nextLine();
+	    	    if (maxLine < str.length()) {
+	    	        maxLine = str.length();
+	    	    }
+	    	    arr[i] = str.toCharArray();
+		    }
+		    
+		    for (int i = 0; i < maxLine; i++) {
+		        for (int j = 0; j < 5; j++) {
+		        	if(i < arr[j].length) {
+		        		System.out.print(arr[j][i]);		        		
+		        	}
+		        }
+		    }
+		}
+		*/
 	}
 
