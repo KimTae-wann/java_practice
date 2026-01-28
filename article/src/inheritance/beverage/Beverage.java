@@ -23,5 +23,9 @@ public abstract class Beverage {
 		return beverageStock;
 	}
 	
+	public void setBeverageStock(int beverageStock) {
+		this.beverageStock = beverageStock;
+	}
+
 	public abstract void whatIsBeverageName();
 }
