@@ -1,6 +1,6 @@
 package inheritance.vehicle;
 
-public class BatMobile extends SportsCar{
+public non-sealed class BatMobile extends SportsCar{
 
 	public BatMobile(String modelName) {
 		super(modelName);

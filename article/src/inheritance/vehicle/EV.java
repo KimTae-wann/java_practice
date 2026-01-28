@@ -1,6 +1,6 @@
 package inheritance.vehicle;
 
-public class EV extends Vehicle{
+public non-sealed class EV extends Vehicle{
 
 	private int battery;
 	

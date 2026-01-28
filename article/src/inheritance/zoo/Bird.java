@@ -24,4 +24,9 @@ public class Bird extends Animal{
 		super.setSpeed(this.walkingSpeed);
 	}
 
+	@Override
+	public String toString() {
+		String str = "Bird [name: %s, isFly: %s]";
+		return str.formatted(super.getName(), this.isFly);
+	}
 }

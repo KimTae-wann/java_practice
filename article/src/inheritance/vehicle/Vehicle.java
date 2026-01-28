@@ -1,6 +1,6 @@
 package inheritance.vehicle;
 
-public class Vehicle {
+public sealed class Vehicle permits SportsCar, EV{
 	
 	private String modelName;
 	private boolean isOn;
@@ -17,5 +17,10 @@ public class Vehicle {
 	public void turnOn() {
 		isOn = true;
 		System.out.println("시동 ON");
+	}
+	
+	public void turnOff() {
+		isOn = false;
+		System.out.println("시동 OFF");
 	}
 }

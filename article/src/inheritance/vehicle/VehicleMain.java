@@ -23,11 +23,13 @@ public class VehicleMain {
 		EV eV1 = new EV("전기차1", 100);
 		eV1.turnOn();
 		eV1.checkBattery();
+		eV1.turnOff();
 
 		Vehicle eV2 = new EV("전기차2", 50);
 		eV2.turnOn();
 		if (eV2 instanceof EV eV) {
 			eV.checkBattery();	
 		}
+		eV2.turnOff();
 	}
 }

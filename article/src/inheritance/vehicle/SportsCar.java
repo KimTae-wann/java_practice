@@ -1,6 +1,6 @@
 package inheritance.vehicle;
 
-public class SportsCar extends Vehicle{
+public sealed class SportsCar extends Vehicle permits BatMobile{
 
 	public SportsCar(String modelName) {
 		super(modelName);

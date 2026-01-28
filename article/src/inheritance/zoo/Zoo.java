@@ -5,6 +5,11 @@ public class Zoo {
 	public static void main(String[] args) {
 		// polymorphism
 		Animal duck = new Bird("오리", "꽥꽥", 15.0, 20.0, 50.0);
+		Animal duck2 = new Bird("오리", "꽥꽥", 15.0, 20.0, 50.0);
+		
+		System.out.println("== 비교 : " + (duck == duck2));
+		System.out.println("equals 비교 : " + duck.equals(duck2));
+		
 		Animal eager = new Bird("독수리", "읏차", 30.0, 20.0, 50.0);
 		duck.howling();
 		duck.move();
@@ -18,6 +23,7 @@ public class Zoo {
 			
 			bird.fly();
 		}
+		System.out.println(duck);
 		
 		Animal lion = new Animal("사자", "크아앙", 30.0, 30.0, 100.0);
 		Animal tiger = new Animal("호랑이", "어흥", 50.0, 55.0, 200.0);
