@@ -1,3 +1,4 @@
 is-a
 sealed
 Liskov Constitue Principle
+오버라이딩 최대한 배제
