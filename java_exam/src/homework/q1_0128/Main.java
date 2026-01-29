@@ -20,8 +20,13 @@ public class Main {
 //		CommonMart commonMart = new CommonMart(products);
 //		customer1.buy(commonMart, product1, 3);
 		
-		ConvenientStore convenientStore = new ConvenientStore(products);
-		customer2.buy(convenientStore, product2, 1);
+//		ConvenientStore convenientStore = new ConvenientStore(products);
+//		customer2.buy(convenientStore, product2, 1);
+		
+		DepartmentStore departmentStore = new DepartmentStore(products);
+		customer1.buy(departmentStore, product3, 1);
+		customer2.buy(departmentStore, product3, 1);
+		customer3.buy(departmentStore, product3, 1);
 		
 	}
 }
