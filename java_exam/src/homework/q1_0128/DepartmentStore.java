@@ -10,52 +10,69 @@ package homework.q1_0128;
  * - 포인트는 전액을 사용하거나 일부만 사용할 수도 있습니다.
  */
 
-public class DepartmentStore {
+public class DepartmentStore extends BaseStore{
 
-	private final String storeName = "백화점";
-	private Product[] products;
-	private final double[] salePercent = {0, 3, 10};
-	private final double[] pointPercent = {0.5, 0, 3};
+	private final double[] DISCOUNT_RATES = {0.1, 0.03, 0};
+	private final double[] POINT_RATES = {0.03, 0.0, 0.005};
+	private final int POINT_THRESHOLD = 10_000;
+	
+	@Override
+	public void sell(Product product, int count, Customer customer, int pointToUse) {
+		// 1. 기본 가격 계산
+		int originalPrice = product.getProductPrice() * count;
+		String grade = customer.getGrade();
 		
-	public DepartmentStore(Product[] products) {
-		this.products = products;
+		// 2. 최종 금액 & 사용 포인트 계산
+		int priceAfterDiscount = calculateDiscountPrice(originalPrice, grade);		
+		int pointToDeduct = calculateUsePoint(customer.getPoint(), pointToUse, priceAfterDiscount);
+		int finalPrice = priceAfterDiscount - pointToDeduct;
+		
+		// 3. 잔액 확인
+		if (!canBuy(customer, finalPrice)) {
+			return ;
+		}
+		
+		// 4. 거래 실행
+		processPayment(customer, finalPrice, pointToDeduct);
+		
+		// 5. 적립 (초기값 기준 적립)
+		int reward = calculateReward(originalPrice, grade);
+		giveReward(customer, reward);
+		
+		printReceipt("백화점", finalPrice, pointToDeduct, reward);
 	}
 	
-	public String getStoreName() {
-		return storeName;
+	private int calculateDiscountPrice(int price, String grade) {
+		double rate = 0.0;
+		if ("VVIP".equals(grade)) {
+			rate = DISCOUNT_RATES[0];
+		} else if ("VIP".equals(grade)) {
+			rate = DISCOUNT_RATES[1];
+		} else {
+			rate = DISCOUNT_RATES[2];
+		}
+		return price - (int) (price * rate);
 	}
-
-	public double getSalePercent(String grade) {
-		double salePercent = 0;
-		if (grade.equals("Normal")) {
-			salePercent = this.salePercent[0];
+	
+	private int calculateUsePoint(int userPoint, int requestPoint, int price) {
+		if (userPoint < POINT_THRESHOLD) {
+			return 0;
 		}
-		else if (grade.equals("VIP")) {
-			salePercent = this.salePercent[1];
-		}
-		else if (grade.equals("VVIP")) {
-			salePercent = this.salePercent[2];			
-		}
-		return salePercent;
+		// 사용 요청한 포인트와 실제 포인트 중 더 작은 값 사용
+		int availablePoint = Math.min(userPoint, requestPoint);
+		// 상품 가격보다 많이 쓸 수 없음
+		return Math.min(availablePoint, price); 
 	}
-
-	public double getPointPercent(String grade) {
-		double pointPercent = 0;
-		if (grade.equals("Normal")) {
-			pointPercent = this.pointPercent[0];
+	
+	private int calculateReward(int originalPrice, String grade) {
+		double rate = 0.0;
+		if ("VVIP".equals(grade)) {
+			rate = POINT_RATES[0];
+		} else if ("VIP".equals(grade)) {
+			rate = POINT_RATES[1];
+		} else {
+			rate = POINT_RATES[2];
 		}
-		else if (grade.equals("VIP")) {
-			pointPercent = this.pointPercent[1];
-		}
-		else if (grade.equals("VVIP")) {
-			pointPercent = this.pointPercent[0];			
-		}
-		return pointPercent;
+		return (int) (originalPrice * rate);
 	}
-
-	public int refund(int totalPrice, int account) {
-		System.out.println(account + "원을 지불하였습니다.");
-		System.out.println("거스름돈은 " + (account - totalPrice) + "원 입니다.");
-		return account - totalPrice;
-	}	
 }

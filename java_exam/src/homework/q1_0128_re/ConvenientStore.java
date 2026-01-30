@@ -1,4 +1,4 @@
-package homework.q1_0128;
+package homework.q1_0128_re;
 
 /**
  * 편의점은 진열한 상품을 판매하고 구매자에게 판매금액의 0.1%의 포인트를 지급합니다.
@@ -11,27 +11,9 @@ package homework.q1_0128;
  * 그리고 구매자는 7000원의 0.1%만큼의 포인트를 지급받습니다.
  */
 
-public class ConvenientStore{
-	
-	private final String storeName = "편의점";
-	private Product[] products;
-	private final double point = 0.1;
+public class ConvenientStore implements Store{
 
-	public ConvenientStore(Product[] products) {
-		this.products = products;
-	}
-
-	public String getStoreName() {
-		return storeName;
-	}
-	
-	public double getPoint() {
-		return point;
-	}
-	
-	public int refund(int totalPrice, int account) {
-		System.out.println(account + "원을 지불하였습니다.");
-		System.out.println("거스름돈은 " + (account - totalPrice) + "원 입니다.");
-		return account - totalPrice;
+	@Override
+	public void sell(Customer customer, Product product, int moneyPaid, int pointPaid) {
 	}
 }
