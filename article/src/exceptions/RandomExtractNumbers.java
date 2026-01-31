@@ -24,7 +24,7 @@ public class RandomExtractNumbers {
 		// this.numbers 의 index에 존재하는 값을 출력한다.
 		// 값이 숫자인 경우 그대로 출력하고
 		// 숫자가 아닌 경우 0을 출력한다.
-		if (index < 0 || index > 99) {
+		if (index < 0 || index >= this.numbers.length) {
 			System.out.println("Index: " + index + " - Out of range - Result: 0");
 		} else {
 			String str = numbers[index];
@@ -33,7 +33,8 @@ public class RandomExtractNumbers {
 				return ;
 			}
 			if (str.matches("^[0-9]+$")) {
-				System.out.println("Index: " + index + ", Value: " + str);
+				int intValue = Integer.parseInt(str);
+				System.out.println("Index: " + index + ", Value: " + intValue);
 			} else {
 				System.out.println("Index: " + index + ", Value: " + str);
 				System.out.println("Index: " + index + " - Not number format - Result: 0");

@@ -3,7 +3,24 @@
 01.30 과제 2명 리뷰
 
 예외처리
+nullPointerException 과 ArrayIndexOutOfBoundException 은 try-catch를 안쓰는게 좋다.
+위의 경우는 위험한 경우라서 에러를 발생시키는게 낫다.
+NumbeFormatException은 무조건 try-catch를 써라. 이건 안쓰면 개힘듬
 
-//
+// 근데 왜 굳이 Exception 과 RuntimeException을 구분한걸까
+// 둘다 Runtime시 일어나는 예외인데
+// CTRL + 1 / Surround try/catch -> 뭐지?
+// 절대로 위임하지마라
+
+try 블럭의 볼륨이 커질 수록 cost가 높아진다.
+try 블럭을 위해 추가적으로 스레드를 생성하기 때문임.
+
+사용자 예외 발생시키기.
+
+Serializable
+
+예외처리 위임하기 절대 하지마라
+리플렉션
+
 regular expression
 regexr.com (flag 관련)
