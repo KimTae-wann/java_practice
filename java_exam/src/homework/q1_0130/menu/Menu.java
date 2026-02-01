@@ -1,5 +1,7 @@
 package homework.q1_0130.menu;
 
+import homework.q1_0130.exceptions.*;
+
 public class Menu {
 
 	
@@ -45,8 +47,12 @@ public class Menu {
 	}
 
 	public void reduceStock() {
-		if (stock > 0) {
-			stock--;
+//		if (stock > 0) {
+//			stock--;
+//		}
+		if (this.stock <= 0) {
+			throw new OutOfStockException("[" + name + "] 재고없음");
 		}
+		this.stock--;
 	}
 }

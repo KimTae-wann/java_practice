@@ -24,51 +24,62 @@ public class Restaurant {
 	}
 	
 	public void addMenu(Menu menu) {
+		if (menu == null) return; // 메뉴가 null 이면 저장하지 않음
 		if (menuCount < menus.length) {
 			menus[menuCount++] = menu;
 		}
 	}
 	
-	public void takeOrder(Customer customer, Menu menu) {
-		System.out.println("고객명 : " + customer.getName());
-		System.out.println(customer.getName() + "의 취함 정도: " + String.format("%.1f", customer.getDrunkenness())); 
-		System.out.println(customer.getName() + "의 배부름 정도: " + customer.getFullness());
-		System.out.println(customer.getName() + "의 소지금: " + customer.getMoney());
-		System.out.println("주문 금액: " + menu.getPrice());
-		
-		// 1. 소지금 확인
-		if (customer.getMoney() < menu.getPrice()) {
-			System.out.println(customer.getName() + "의 소지금 부족\n");
-			return;
-		}
-		
-		// 2. 종류별 기준 확인
-		if (menu.getType().equals("주류")) {
-			System.out.println(this.name + "식당의 취함 기준: " + drunkLimit);
-			if (customer.getDrunkenness() >= drunkLimit) {
-				System.out.println("주문 실패 - 너무 취함\n");
-				return;
+	public void takeOrder(Customer customer, Menu menu) {		
+		try {
+			if (customer == null) throw new NullPointerException("잘못된 고객입니다.");
+			if (menu == null) throw new NullPointerException("잘못된 메뉴 입니다.");
+			
+			System.out.println("고객명 : " + customer.getName());
+			System.out.println(customer.getName() + "의 취함 정도: " + String.format("%.1f", customer.getDrunkenness())); 
+			System.out.println(customer.getName() + "의 배부름 정도: " + customer.getFullness());
+			System.out.println(customer.getName() + "의 소지금: " + customer.getMoney());
+			System.out.println("주문 금액: " + menu.getPrice());
+			
+			// 1. 소지금 확인
+			if (customer.getMoney() < menu.getPrice()) {
+				throw new NoMoneyException("잔액 부족");
 			}
-			customer.drink(menu.getAlcohol());
-		}
-		else if (menu.getType().equals("식사류")) {
-			System.out.println(this.name + "식당의 배부름 기준" + fullLimit);
-			if (customer.getFullness() >= fullLimit) {
-				System.out.println("주문 실패 - 너무 배부름\n");
-				return;
+			
+			// 2. 종류별 기준 확인
+			if (menu.getType().equals("주류")) {
+				System.out.println(this.name + "식당의 취함 기준: " + drunkLimit);
+				if (customer.getDrunkenness() >= drunkLimit) {
+					throw new DrunkenException("주량 기준 초과");
+				}
+				customer.drink(menu.getAlcohol());
 			}
-			customer.eat(menu.getWeight());
+			else if (menu.getType().equals("식사류")) {
+				System.out.println(this.name + "식당의 배부름 기준" + fullLimit);
+				if (customer.getFullness() >= fullLimit) {
+					throw new FullException("배부름 기준 초과");
+				}
+				customer.eat(menu.getWeight());
+			}
+			
+			// 3. 주문 성공
+			customer.pay(menu.getPrice());
+			totalSales += menu.getPrice();
+			menu.reduceStock();
+			System.out.println("주문 성공");
 		}
-		else {
-			System.out.println("주류, 식사류 외는 팔지 않습니다");
-			return;
+		catch (NullPointerException e) {
+			System.out.println("참조값 누락 [" + e.getMessage() + "]");
 		}
-		
-		// 3. 주문 성공
-		customer.pay(menu.getPrice());
-		totalSales += menu.getPrice();
-		menu.reduceStock();
-		System.out.println("주문 성공\n");
+		catch (OutOfStockException | NoMoneyException | DrunkenException | FullException e) {
+			System.out.println("주문 실패 [" + e.getMessage() + "]");
+		}
+		catch (Exception e) {
+			System.out.println("알수없는 오류" + e.getMessage());
+		}
+		finally {
+			System.out.println("-----끝-----\n");
+		}
 	}
 	
 	public void printStatus() {
