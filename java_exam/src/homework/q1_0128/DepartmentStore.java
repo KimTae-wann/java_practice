@@ -44,7 +44,9 @@ public class DepartmentStore extends BaseStore{
 	
 	private int calculateDiscountPrice(int price, String grade) {
 		double rate = 0.0;
-		if ("VVIP".equals(grade)) {
+		// 문자열 리터럴을 앞에다 쓰면 NullPointerException을 발생시키지 않으므로, 
+		// grade.eqauls("VVIP") 로 refactoring 하는 것이 좋음
+		if ("VVIP".equals(grade)) { 
 			rate = DISCOUNT_RATES[0];
 		} else if ("VIP".equals(grade)) {
 			rate = DISCOUNT_RATES[1];

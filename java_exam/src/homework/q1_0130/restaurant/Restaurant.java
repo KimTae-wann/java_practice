@@ -74,7 +74,7 @@ public class Restaurant {
 		catch (OutOfStockException | NoMoneyException | DrunkenException | FullException e) {
 			System.out.println("주문 실패 [" + e.getMessage() + "]");
 		}
-		catch (Exception e) {
+		catch (Exception e) { // Exception e 를 마지막으로 선언해주는건 좋지 않다. 어떤 오류인지 알 수 없다.
 			System.out.println("알수없는 오류" + e.getMessage());
 		}
 		finally {

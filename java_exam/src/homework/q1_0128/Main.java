@@ -52,7 +52,6 @@ public class Main {
         System.out.println("[구매 전] 현금: " + c5.getAccount() + " / 포인트: " + c5.getPoint());
         c5.buy(deptStore, tv, 1, 5000);
         System.out.println("[구매 후] 현금: " + c5.getAccount() + " / 포인트: " + c5.getPoint());
-        System.out.println("[기대 결과] 현금: 400,000원, 포인트: 9,500점");
-        
+        System.out.println("[기대 결과] 현금: 400,000원, 포인트: 9,500점");        
     }
 }
