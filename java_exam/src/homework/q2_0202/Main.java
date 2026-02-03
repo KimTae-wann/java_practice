@@ -84,7 +84,7 @@ public class Main {
 				}
 				
 				// 좌석 예약
-				System.out.println(flightNum + " 편의 좌석 현환입니다.");
+				System.out.println(flightNum + " 편의 좌석 현황입니다.");
 				selectedFlight.printSitStatus();
 				
 				if (selectedFlight.getExistSit() <= 0) {
@@ -93,14 +93,14 @@ public class Main {
 				}
 				
 				System.out.print("좌석 예약을 하려면 번호를 입력하세요: ");
-				int sitNum = Integer.parseInt(sc.nextLine());
+				int sitNum = Integer.parseInt(sc.nextLine()); // NumberFormatException Handling
 				String key = String.valueOf(sitNum);
 				
 				// Flight 클래스의 Map
 				Map<String, String> seats = selectedFlight.getSit();
 				
 				if (seats.get(key).equals("X")) {
-					System.out.println(sitNum + "번 좌석은 이미 예약된 자석입니다.");
+					System.out.println(sitNum + "번 좌석은 이미 예약된 좌석입니다.");
 				}
 				else {
 					System.out.print(sitNum + "번 좌석을 예약하시겠습니까? (y/N)");
