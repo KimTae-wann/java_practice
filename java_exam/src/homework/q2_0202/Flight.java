@@ -5,23 +5,23 @@ import java.util.Map;
 
 public class Flight {
 
-	private Map<String, String> sit;
+	private Map<String, String> seats;
 	private String flightName;
-	private int existSit;
+	private int existSeats;
 	
 	
-	public Flight(Map<String, String> sit, String flightName, int existSit) {
-		this.sit = sit;
+	public Flight(Map<String, String> seat, String flightName, int existSeats) {
+		this.seats = seat;
 		this.flightName = flightName;
-		this.existSit = existSit;
+		this.existSeats = existSeats;
 	}
 
-	public Map<String, String> getSit() {
-		return sit;
+	public Map<String, String> getSeats() {
+		return seats;
 	}
 
-	public void setSit(Map<String, String> sit) {
-		this.sit = sit;
+	public void setSeats(Map<String, String> seats) {
+		this.seats = seats;
 	}
 
 	public String getFlightName() {
@@ -32,21 +32,21 @@ public class Flight {
 		this.flightName = flightName;
 	}
 
-	public int getExistSit() {
-		return existSit;
+	public int getExistSeats() {
+		return existSeats;
 	}
 
-	public void setExistSit(int existSit) {
-		this.existSit = existSit;
+	public void setExistSeats(int existSeats) {
+		this.existSeats = existSeats;
 	}
 	
-	public void printSitStatus() {
+	public void printSeatsStatus() {
 		for (int i = 1; i <= 9; i++) {
 			if (i != 9) {
-				System.out.print(i + ": " + this.sit.get(String.valueOf(i)) + ", ");
+				System.out.print(i + ": " + this.seats.get(String.valueOf(i)) + ", ");
 			}
 			else {
-				System.out.println(i + ": " + this.sit.get(String.valueOf(i)));
+				System.out.println(i + ": " + this.seats.get(String.valueOf(i)));
 			}
 		}
 	}

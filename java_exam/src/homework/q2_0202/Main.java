@@ -14,31 +14,31 @@ public class Main {
 		Map<String, List<Flight>> flightTicket = new HashMap<>();
 		List<Flight> toBusan = new ArrayList<>();
 		// 세팅
-		Map<String, String> sitStatus0091 = new HashMap<>();
-		sitStatus0091.put("1", "X");
-		sitStatus0091.put("2", "X");
-		sitStatus0091.put("3", "X");
-		sitStatus0091.put("4", "X");
-		sitStatus0091.put("5", "X");
-		sitStatus0091.put("6", "X");
-		sitStatus0091.put("7", "X");
-		sitStatus0091.put("8", "X");
-		sitStatus0091.put("9", "X");
+		Map<String, String> seatStatus0091 = new HashMap<>();
+		seatStatus0091.put("1", "X");
+		seatStatus0091.put("2", "X");
+		seatStatus0091.put("3", "X");
+		seatStatus0091.put("4", "X");
+		seatStatus0091.put("5", "X");
+		seatStatus0091.put("6", "X");
+		seatStatus0091.put("7", "X");
+		seatStatus0091.put("8", "X");
+		seatStatus0091.put("9", "X");
 		
-		toBusan.add(new Flight(sitStatus0091, "0091", 0));
+		toBusan.add(new Flight(seatStatus0091, "0091", 0));
 		
-		Map<String, String> sitStatus0001 = new HashMap<>();
-		sitStatus0001.put("1", "O");
-		sitStatus0001.put("2", "X");
-		sitStatus0001.put("3", "O");
-		sitStatus0001.put("4", "O");
-		sitStatus0001.put("5", "X");
-		sitStatus0001.put("6", "O");
-		sitStatus0001.put("7", "X");
-		sitStatus0001.put("8", "X");
-		sitStatus0001.put("9", "X");
+		Map<String, String> seatStatus0001 = new HashMap<>();
+		seatStatus0001.put("1", "O");
+		seatStatus0001.put("2", "X");
+		seatStatus0001.put("3", "O");
+		seatStatus0001.put("4", "O");
+		seatStatus0001.put("5", "X");
+		seatStatus0001.put("6", "O");
+		seatStatus0001.put("7", "X");
+		seatStatus0001.put("8", "X");
+		seatStatus0001.put("9", "X");
 		
-		toBusan.add(new Flight(sitStatus0001, "0001", 4));
+		toBusan.add(new Flight(seatStatus0001, "0001", 4));
 		
 		flightTicket.put("부산", toBusan);
 		
@@ -58,7 +58,7 @@ public class Main {
 			
 			System.out.println(dest + "행 비행기 편은 아래와 같습니다.");
 			for (Flight f : flightList) {
-				System.out.println(f.getFlightName() + " 예매가능 좌석 수: "	+ f.getExistSit()); 
+				System.out.println(f.getFlightName() + " 예매가능 좌석 수: "	+ f.getExistSeats()); 
 			}
 			
 			// 비행기 선택 루프
@@ -85,29 +85,29 @@ public class Main {
 				
 				// 좌석 예약
 				System.out.println(flightNum + " 편의 좌석 현황입니다.");
-				selectedFlight.printSitStatus();
+				selectedFlight.printSeatsStatus();
 				
-				if (selectedFlight.getExistSit() <= 0) {
+				if (selectedFlight.getExistSeats() <= 0) {
 					System.out.println("예약 가능한 좌석이 없습니다.");
 					continue;
 				}
 				
 				System.out.print("좌석 예약을 하려면 번호를 입력하세요: ");
-				int sitNum = Integer.parseInt(sc.nextLine()); // NumberFormatException Handling
-				String key = String.valueOf(sitNum);
+				int seatNum = Integer.parseInt(sc.nextLine()); // NumberFormatException Handling
+				String key = String.valueOf(seatNum);
 				
 				// Flight 클래스의 Map
-				Map<String, String> seats = selectedFlight.getSit();
+				Map<String, String> seats = selectedFlight.getSeats();
 				
 				if (seats.get(key).equals("X")) {
-					System.out.println(sitNum + "번 좌석은 이미 예약된 좌석입니다.");
+					System.out.println(seatNum + "번 좌석은 이미 예약된 좌석입니다.");
 				}
 				else {
-					System.out.print(sitNum + "번 좌석을 예약하시겠습니까? (y/N)");
+					System.out.print(seatNum + "번 좌석을 예약하시겠습니까? (y/N)");
 					String confirm = sc.nextLine();
 					if(confirm.equalsIgnoreCase("y")) { // 대소문자
 						seats.put(key, "X"); // 예약
-						selectedFlight.setExistSit(selectedFlight.getExistSit() - 1);
+						selectedFlight.setExistSeats(selectedFlight.getExistSeats() - 1);
 						System.out.println("예약이 완료되었습니다.");
 						break;
 					}
