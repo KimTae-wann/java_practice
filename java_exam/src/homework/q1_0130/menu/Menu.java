@@ -5,8 +5,9 @@ import homework.q1_0130.exceptions.*;
 public class Menu {
 
 	
+	// type을 ENUM으로
 	private String type;	// 식사류 or 주류
-	private String name;	// 메뉴 이름ㄴ
+	private String name;	// 메뉴 이름
 	private int price;		// 가격
 	private int weight;		// 무게
 	private double alcohol;	// 도수

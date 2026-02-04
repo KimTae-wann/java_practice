@@ -1,40 +1,33 @@
 package coffee;
 
+import java.util.List;
+
 public class CoffeeShop {
-	private Coffee ice;
-	private Coffee hot;
 	
-	public CoffeeShop(Coffee ice, Coffee hot) {
-		this.ice = ice;
-		this.hot = hot;
+	private List<Coffee> coffeeMenus;
+	
+	public CoffeeShop(List<Coffee> coffeeMenus) {
+		this.coffeeMenus = coffeeMenus;
 	}
 	
-	public int orderCoffee(int menu, int quantity) {
-		if (menu == 1) {
-			if (ice.getCoffeeStock() - quantity < 0) {
-				System.out.println(ice.getCoffeeName() + "를 " + quantity + "만큼 구매할 수 업습니다.");
-				return 0;
+	public void orderCoffee(String order, int quantity) {
+		for (Coffee coffee : coffeeMenus) {
+			if (order.equals(coffee.getCoffeeName())) {
+				if (coffee.getCoffeeStock() - quantity < 0) {
+					System.out.println(coffee.getCoffeeName() + "를 " + quantity + "만큼 구매할 수 업습니다.");
+					System.out.println(coffee.getCoffeeName() + "은 " + coffee.getCoffeeStock() + "잔 남았습니다");
+					return ;
+				}
+				else {
+					System.out.println(coffee.getCoffeeName() + "음료를 " + quantity + "개 주문 받았습니다");
+					System.out.println(coffee.getCoffeeName() + "은 " + coffee.getCoffeeStock() + "잔 남았습니다");
+					System.out.println(coffee.getCoffeeName() + "는 총 " + (coffee.getCoffeePrice() * quantity) + "원 입니다");
+					coffee.setCoffeeStock(coffee.getCoffeeStock() - quantity);
+					return ;
+				}
 			}
-			else {
-				System.out.println(ice.getCoffeeName() + "음료를 " + quantity + "개 주문 받았습니다");
-				ice.setCoffeeStock(ice.getCoffeeStock() - quantity);
-				return ice.getCoffeePrice() * quantity;
-			}
-			
 		}
-		else if (menu == 2){
-			if (hot.getCoffeeStock() - quantity < 0) {
-				System.out.println(hot.getCoffeeName() + "는 " + quantity + "잔 보다 적게 남았습니다.");
-				return 0;
-			}
-			System.out.println(hot.getCoffeeName() + "음료를 " + quantity + "개 주문 받았습니다");
-			
-			hot.setCoffeeStock(ice.getCoffeeStock() - quantity);
-			return hot.getCoffeePrice() * quantity;
-		}
-		else {
-			System.out.println("존재하지 않는 음료입니다");
-			return 0;
-		}
+		System.out.println("그런 메뉴는 없습니다.");
+		return ;
 	}
 }

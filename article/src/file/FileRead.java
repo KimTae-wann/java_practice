@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Stream;
 
 public class FileRead {
 	
@@ -14,6 +17,19 @@ public class FileRead {
 	 * NIO
 	 * Java version >= 1.8
 	 */
+	
+	public static void readANdPrintFIleDescriptionUseNew(String parentPath, String file) {
+		Path path = Paths.get(parentPath, file);
+		
+		// NIO를 조금 더 깔끔하게 작성한 것
+		try (Stream<String> lineStream = Files.lines(path)) {
+			lineStream.forEach(line -> {
+				System.out.println(line);
+			});
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	public static void readAndPrintFileDescriptionUseNIO(String parentPath, String file) {
 		// 1. 읽으려는 파일을 특정
 		File target = new File(parentPath, file);
@@ -23,7 +39,7 @@ public class FileRead {
 		try {
 			// lines는 메모리를 덜먹음
 			Files.lines(target.toPath());
-			// 메모리를 많이씀 근데 크게 의미없긴함
+			// readAllLines 메모리를 많이씀 
 			List<String> lines = Files.readAllLines(target.toPath()); 
 			for (String line : lines) {
 				System.out.println(line);
@@ -44,20 +60,20 @@ public class FileRead {
 		// 3. File or Directory
 		if (fp.exists() && fp.isFile()) {
 			// 4. Read File			
-			// 4-1. 파일의 바이트를 Chunking해서 가져옴
 			FileReader fileReader = null;
 			BufferedReader bufferedReader = null;
-			// 4-2. 파일의 내용을 String으로 변환
 			try  {
+				// 4-1. 파일의 바이트를 Chunking해서 가져옴
 				fileReader = new FileReader(fp);
 				bufferedReader = new BufferedReader(fileReader);
 				// need FileNotFoundException Handling.
 				// FileNotFoundException extends IOExeption
-				// bufferedReader 도 IOExeption을 다뤄야 하므로 한번에 처리
-				// 4-3. 출력
+				// bufferedReader도 IOExeption을 다뤄야 하므로 한번에 처리
+				// 4-2. 파일의 내용을 String으로 변환
 				String line = "";
 				while ((line = bufferedReader.readLine()) != null) {
 					// need IOExeption Handling 
+					// 4-3. 출력
 					System.out.println(line);					
 				}
 			} catch (IOException e) { 

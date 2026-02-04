@@ -1,17 +1,20 @@
 package coffee;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CoffeeShopMain {
 
 	public static void main(String[] args) {
-		Coffee iceAmericano = new Coffee("아이스 아메리카노", 2000, 100);
-		Coffee hotLatte = new Coffee("따듯한 라떼", 3000, 60); 
-		CoffeeShop coffeeShop = new CoffeeShop(iceAmericano, hotLatte);
+		Coffee iceAmericano = new Coffee(CoffeeType.ICE, "iceAmericano", 2000, 100);
+		Coffee hotLatte = new Coffee(CoffeeType.HOT, "hotLatte", 3000, 60); 
+		List<Coffee> coffeeMenus = new ArrayList<>();
+		coffeeMenus.add(iceAmericano);
+		coffeeMenus.add(hotLatte);
+		CoffeeShop coffeeShop = new CoffeeShop(coffeeMenus);
 		
-		int iceAmericanoPrice = coffeeShop.orderCoffee(1, 101);
-		System.out.println(iceAmericano.getCoffeeName() + "은 " + iceAmericano.getCoffeeStock() + "잔 남았습니다");
-		System.out.println(iceAmericano.getCoffeeName() + "는 총 " + iceAmericanoPrice + "원 입니다");
-		int hotLattePrice = coffeeShop.orderCoffee(2, 10);
-		System.out.println(hotLatte.getCoffeeName() + "은 " + hotLatte.getCoffeeStock() + "잔 남았습니다");
-		System.out.println(hotLatte.getCoffeeName() + "는 총 " + hotLattePrice + "원 입니다");
+		coffeeShop.orderCoffee("iceAmericano", 101);
+		coffeeShop.orderCoffee("hotLatte", 10);
+		coffeeShop.orderCoffee("hotVanliaLatte", 10);
 	}
 }

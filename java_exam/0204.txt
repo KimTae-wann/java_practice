@@ -1,0 +1,8 @@
+Enum 에 생성자 파라미터를 넘기지 않는 이유는
+실무에서 쓸일이 없기 떄문이다.
+사실 DB에서 동적으로 파라미터를 받아와서 값을 설정하는데,
+ENUM은 동적으로 파라미터를 handling할 수 없다 (생성자가 private 이기때문에)
+
+//Menu 클래스랑 Seat 클래스 ENUM으로 작성해봐
+
+Singleton Pattern
