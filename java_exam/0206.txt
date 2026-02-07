@@ -1,0 +1,33 @@
+Stream
+
+Stream Filtering & Slicing
+
+Stream Mapping
+Regular Expression
+
+Stream Find & Matching
+// Find -> 일치 여부
+// Matching -> exist or not / return boolean
+Optional Class -> NullPointerException을 회피
+
+??? Stream에 객체가 들어있는게 아니야??? -> filter 이후 findAny 시
+NullPointerException을 일으켜야 되는거 아님? 왜 null을 반환하지?
+
+T get 대신 T orElse사용 -> T get은 어차피 예외를 발생시키니까 P.610
+
+
+왜 나누었을까.. -> Stream의 동작 방법이 특이하기 때문에 -> 알아보자
+// 최종함수에 맞게 반복이 돌아간다. filter map distinct 하고 출력 이게 아니고
+// 최종함수를 먼저 보고 중간과정을 실행함 -> Builder Pattern
+중간함수 vs 최종함수
+중간함수: return Stream<T>
+최종함수: not return Stream
+
+filter
+skip & limit
+map
+distinct
+forEach
+find
+
+ 
