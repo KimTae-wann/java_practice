@@ -1,5 +1,7 @@
 package v1;
 
+import java.util.Objects;
+
 public class Company {
 
 	private String companyName;	// 회사 이름
@@ -35,4 +37,26 @@ public class Company {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	@Override
+	public String toString() {
+		return "\n회사 이름: " + companyName +
+				"\n직책: " + job +
+				"\n주소: " + address;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Company c)) return false;
+		return Objects.equals(this.companyName, c.companyName) &&
+				Objects.equals(this.job, c.job) &&
+				Objects.equals(this.address, c.address);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(companyName, job, address);
+	}
+				
 }

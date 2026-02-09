@@ -7,11 +7,11 @@ public class Phone {
 	}
 	
 	private Phone.Type phoneType;
-	private String phoneNumeber;
+	private String phoneNumber;
 	
-	public Phone(Type phoneType, String phoneNumeber) {
+	public Phone(Type phoneType, String phoneNumber) {
 		this.phoneType = phoneType;
-		this.phoneNumeber = phoneNumeber;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public Phone.Type getPhoneType() {
@@ -22,12 +22,26 @@ public class Phone {
 		this.phoneType = phoneType;
 	}
 
-	public String getPhoneNumeber() {
-		return phoneNumeber;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhoneNumeber(String phoneNumeber) {
-		this.phoneNumeber = phoneNumeber;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	@Override
+	public String toString() {
+		String type = "";
+		if (this.phoneType == Type.PERSONAL) {
+			type = "Personal";
+		} else if (this.phoneType == Type.HOME) {
+			type = "Home";
+		} else if (this.phoneType == Type.COMPANY) {
+			type = "Company";
+		}
+		return "타입: " + type +
+				" 번호: " + phoneNumber;
 	}
 }
 	
