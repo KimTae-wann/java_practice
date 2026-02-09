@@ -73,13 +73,13 @@ public class ContactManager {
 	public void updateContactList(String contactName, int updateOption) {
 		Scanner sc = new Scanner(System.in);
 		
-		Contact c = new Contact();
+		Contact c = null;
 		for (Contact contact : contactList) {
 			if (contact.getName().equals(contactName)) {
 				c = contact;
 			}
 		}
-		if (c.getName() == null || !c.getName().equals(contactName)) {
+		if (c == null){
 			System.out.println("연락처에 " + contactName + "라는 사람은 없습니다.");
 			sc.close();
 			return ;
