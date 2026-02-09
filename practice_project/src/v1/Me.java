@@ -125,8 +125,12 @@ public class Me {
 				System.out.print("삭제할 연락처의 이름을 입력하세요: ");
 				String contactName = sc.nextLine();
 				cm.deleteContactList(contactName);
+			} else {
+				System.out.println("잘못된 번호 입니다.");
+				continue;
 			}
 		}
 		System.out.println("종료합니다.");
+		sc.close();
 	}
 }

@@ -79,8 +79,13 @@ public class ContactManager {
 				c = contact;
 			}
 		}
+		if (c.getName() == null || !c.getName().equals(contactName)) {
+			System.out.println("연락처에 " + contactName + "라는 사람은 없습니다.");
+			sc.close();
+			return ;
+		}
 		String updateString = "";
-		if (updateOption != 6 || updateOption != 7) {
+		if (updateOption != 6 && updateOption != 7) {
 			System.out.print("수정 될 정보를 입력하세요:");
 			updateString = sc.nextLine();
 		}
@@ -104,29 +109,31 @@ public class ContactManager {
 			int companyOption = sc.nextInt();
 			sc.nextLine();
 			Company company = c.getCompany();
+			System.out.print("수정 될 정보를 입력하세요:");
+			updateString = sc.nextLine();
 			if (companyOption == 1) {
-				System.out.print("수정 될 정보를 입력하세요:");
-				updateString = sc.nextLine();
 				company.setCompanyName(updateString);
 			} else if (companyOption == 2) {
-				System.out.print("수정 될 정보를 입력하세요:");
-				updateString = sc.nextLine();
 				company.setJob(updateString);
 			} else if (companyOption == 3) {
-				System.out.print("수정 될 정보를 입력하세요:");
-				updateString = sc.nextLine();
-				c.getCompany().setAddress(updateString);
+				company.setAddress(updateString);
 			}
 		} else if (updateOption == 7) {
-			System.out.println("몇 번째 번호를 수정하시나요? 가능한 번호: " + contactList.size());
+			for (Phone phone : c.getPhones()) {
+				System.out.println(phone);
+			}
+			System.out.println("어떤 번호를 수정하시나요?: 0 ~ " + (c.getPhones().size() - 1));
 			int contactOption = sc.nextInt();
 			sc.nextLine();
 			Phone phone = c.getPhones().get(contactOption);
+			System.out.print("수정 될 정보를 입력하세요:");
+			updateString = sc.nextLine();
 			phone.setPhoneNumber(updateString);
 			
 		} else if (updateOption == 8) {
 			c.setMemo(updateString);
 		}
+		sc.close();
 	}
 	
 	
