@@ -3,6 +3,7 @@ package fp.basic.$interface.practice;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Quiz1 {
@@ -31,5 +32,10 @@ public class Quiz1 {
 		
 		resList.stream()
 				.forEach(System.out::println);
+		
+		applicants.stream()
+					.filter(student -> student.getScore() > 100)
+					.findFirst() // 결과가 없을 수 있으므로 Optional<Student> 반환
+					.ifPresent(student -> System.out.println(student.getName()));
 	}
 }
